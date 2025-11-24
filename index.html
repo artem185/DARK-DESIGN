@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Design - Профессиональный дизайн</title>
+    <style>
+        /* Основные стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #f0f0f0;
+            overflow-x: hidden;
+        }
+
+        /* Фон с красными узорами */
+        .background-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 15% 50%, rgba(120, 0, 0, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 85% 30%, rgba(120, 0, 0, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 50% 80%, rgba(120, 0, 0, 0.1) 0%, transparent 20%);
+            background-color: #0a0a0a;
+            z-index: -1;
+        }
+
+        .pattern-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(30deg, rgba(80, 0, 0, 0.2) 12%, transparent 12.5%, transparent 87%, rgba(80, 0, 0, 0.2) 87.5%, rgba(80, 0, 0, 0.2)),
+                linear-gradient(150deg, rgba(80, 0, 0, 0.2) 12%, transparent 12.5%, transparent 87%, rgba(80, 0, 0, 0.2) 87.5%, rgba(80, 0, 0, 0.2)),
+                linear-gradient(30deg, rgba(80, 0, 0, 0.2) 12%, transparent 12.5%, transparent 87%, rgba(80, 0, 0, 0.2) 87.5%, rgba(80, 0, 0, 0.2)),
+                linear-gradient(150deg, rgba(80, 0, 0, 0.2) 12%, transparent 12.5%, transparent 87%, rgba(80, 0, 0, 0.2) 87.5%, rgba(80, 0, 0, 0.2)),
+                linear-gradient(60deg, rgba(120, 0, 0, 0.2) 25%, transparent 25.5%, transparent 75%, rgba(120, 0, 0, 0.2) 75%, rgba(120, 0, 0, 0.2)),
+                linear-gradient(60deg, rgba(120, 0, 0, 0.2) 25%, transparent 25.5%, transparent 75%, rgba(120, 0, 0, 0.2) 75%, rgba(120, 0, 0, 0.2));
+            background-size: 80px 140px;
+            background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+            opacity: 0.4;
+        }
+
+        /* Секции */
+        section {
+            padding: 100px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Приветственная секция */
+        .welcome-section h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff0000, #ff6b6b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .welcome-section .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            max-width: 800px;
+            line-height: 1.6;
+            color: #ff6b6b;
+        }
+
+        /* Кнопки */
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            margin: 10px;
+            background: linear-gradient(45deg, #ff0000, #b30000);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4);
+            background: linear-gradient(45deg, #ff3333, #cc0000);
+        }
+.btn-secondary {
+            background: linear-gradient(45deg, #660000, #990000);
+            box-shadow: 0 5px 15px rgba(102, 0, 0, 0.3);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 8px 20px rgba(102, 0, 0, 0.4);
+            background: linear-gradient(45deg, #770000, #aa0000);
+        }
+
+        /* Секция услуг */
+        .services-section {
+            background-color: rgba(20, 0, 0, 0.7);
+        }
+
+        .services-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #ff3333;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: rgba(40, 0, 0, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-header {
+            background: linear-gradient(45deg, #990000, #660000);
+            padding: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .service-price {
+            padding: 30px;
+            font-size: 1.8rem;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        /* Секция о сообществе */
+        .community-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #ff3333;
+        }
+
+        .community-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin-top: 40px;
+        }
+
+        .info-card {
+            background: rgba(40, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            width: 300px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .info-card h3 {
+            color: #ff3333;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .info-card p {
+            line-height: 1.6;
+        }
+
+        /* Секция портфолио */
+        .portfolio-section {
+            background-color: rgba(20, 0, 0, 0.7);
+        }
+
+        .portfolio-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #ff3333;
+        }
+
+        .portfolio-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin-top: 40px;
+        }
+
+        .portfolio-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            background: rgba(30, 0, 0, 0.7);
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.05);
+        }
+
+        .portfolio-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #330000, #550000);
+            color: #ff3333;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Секция отзывов */
+        .reviews-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #ff3333;
+        }
+
+        .reviews-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+.review {
+            background: rgba(40, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+
+        .review p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .review-author {
+            color: #ff3333;
+            font-weight: bold;
+        }
+
+        /* Футер */
+        footer {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: rgba(10, 0, 0, 0.9);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: #ff3333;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .copyright {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Анимация появления */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .welcome-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .welcome-section .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .services-grid, .community-info, .portfolio-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Фон с узорами -->
+    <div class="background-pattern">
+        <div class="pattern-overlay"></div>
+    </div>
+
+    <!-- Приветственная секция -->
+    <section class="welcome-section">
+        <h1>ДОБРО ПОЖАЛОВАТЬ</h1>
+        <p class="subtitle">Я тот, кто укажет твоему дизайну дорогу</p>
+        <a href="#services" class="btn">Приобрести дизайн</a>
+    </section>
+
+    <!-- Секция услуг -->
+    <section class="services-section" id="services">
+        <h2>Мои продукты</h2>
+        <p>Выберите подходящий вариант дизайна для вашего проекта</p>
+        
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <div class="service-header">Аватарка</div>
+                <div class="service-price">400 – 500₽</div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-header">Анимированная аватарка</div>
+                <div class="service-price">800 – 1000₽</div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-header">Превью</div>
+                <div class="service-price">500₽</div>
+            </div>
+            <div class="service-card fade-in">
+                <div class="service-header">Оформление поста</div>
+                <div class="service-price">400₽</div>
+            </div>
+        </div>
+        
+        <a href="https://t.me/Dark_PortfoLI" class="btn" style="margin-top: 40px;">Заказать дизайн</a>
+    </section>
+
+    <!-- Секция портфолио -->
+    <section class="portfolio-section" id="portfolio">
+        <h2>Портфолио</h2>
+        <p>Примеры моих работ, которые говорят сами за себя</p>
+        
+        <a href="https://t.me/Dark_PortfoLI" class="btn" style="margin-top: 40px;">Смотреть полное портфолио</a>
+    </section>
+
+    <!-- Секция о сообществе -->
+    <section class="community-section" id="community">
+        <h2>Наше сообщество</h2>
+        <p>Присоединяйтесь к нашему растущему сообществу профессионалов</p>
+        
+        <div class="community-info">
+            <div class="info-card fade-in">
+                <h3>250+ человек</h3>
+                <p>Активное сообщество дизайнеров и клиентов, где каждый найдет что-то для себя.</p>
+            </div>
+            <div class="info-card fade-in">
+                <h3>Пиздатый дизайн</h3>
+                <p>Качественные и уникальные работы, которые выделят вас среди конкурентов.</p>
+            </div>
+            <div class="info-card fade-in">
+                <h3>Лучшая продукция</h3>
+                <p>Мы предлагаем только премиум качество и индивидуальный подход к каждому клиенту.</p>
+            </div>
+            <div class="info-card fade-in">
+                <h3>Тебе 100% стоит туда попасть</h3>
+                <p>Присоединяйся к нашему сообществу и получи доступ к эксклюзивным предложениям!</p>
+            </div>
+        </div>
+        
+        <a href="https://t.me/+3XCZcuNMOUBhYTli" class="btn" style="margin-top: 40px;">Присоединиться к сообществу</a>
+    </section>
+
+    <!-- Секция отзывов -->
+    <section class="reviews-section" id="reviews">
+        <h2>Отзывы клиентов</h2>
+        <p>Что говорят о нас наши клиенты</p>
+        
+        <div class="reviews-container">
+            <div class="review fade-in">
+                <p>"Работа выполнена просто великолепно! Дизайн превзошел все мои ожидания. Быстро, качественно и профессионально."</p>
+                <div class="review-author">- Алексей</div>
+            </div>
+            <div class="review fade-in">
+                <p>"Обращался за дизайном для своего бизнеса. Результат просто огонь! Теперь все спрашивают, кто делал мой фирменный стиль."</p>
+                <div class="review-author">- Мария</div>
+            </div>
+            <div class="review fade-in">
+                <p>"Рекомендую всем! Качество на высшем уровне, подход индивидуальный, сроки соблюдены. Буду обращаться еще!"</p>
+                <div class="review-author">- Дмитрий</div>
+            </div>
+        </div>
+        
+        <a href="https://t.me/OTZIVIDARKxxx" class="btn" style="margin-top: 40px;">Читать все отзывы</a>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="footer-links">
+            <a href="#services">Услуги</a>
+            <a href="#portfolio">Портфолио</a>
+            <a href="#community">Сообщество</a>
+            <a href="#reviews">Отзывы</a>
+            <a href="https://t.me/Dark_PortfoLI">Telegram</a>
+        </div>
+        <p class="copyright">© 2025 Dark Design. Все права защищены.</p>
+    </footer>
+
+    <script>
+        // Плавная прокрутка к якорям
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Анимация появления элементов при скролле
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            fadeInObserver.observe(element);
+        });
+    </script>
+</body>
+</html>
